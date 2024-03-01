@@ -1,0 +1,105 @@
+body {
+  padding: 0 5vh;
+  font-family: "Courier New", Courier, monospace;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-emp {
+  background-color: grey;
+  border: none;
+  padding: 1vh;
+  color: white;
+  border-radius: 1vh;
+}
+main {
+  margin-top: 5vh;
+  display: flex;
+  height: 80vh;
+}
+.emp-list {
+  width: 30%;
+  overflow-y: scroll;
+  border: 1px solid black;
+  padding: 1vh;
+}
+.emp-list h4 {
+  padding-bottom: 1vh;
+  border-bottom: 1px solid black;
+}
+.emp-info {
+  width: 70%;
+  border: 1px solid black;
+  padding: 1vh;
+}
+.emp-name {
+  display: flex;
+  flex-direction: column;
+}
+.emp-name span {
+  background-color: rgb(207, 207, 207);
+  padding: 2vh;
+  margin: 0.5vh;
+  border-radius: 1vh;
+}
+.emp-name span:hover {
+  background-color: rgb(157, 157, 157);
+  cursor: pointer;
+}
+.emp-tile {
+  display: flex;
+  justify-content: space-between;
+}
+.emp-info h4 {
+  padding-bottom: 1vh;
+  border-bottom: 1px solid black;
+}
+.emp-details {
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.emp-details img {
+  width: 40vh;
+}
+.emp-name-single {
+  font-size: 5vh;
+  font-weight: 600;
+}
+.addEmployeeForm {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  background-color: white;
+  box-shadow: 0 0 50px grey;
+  border-radius: 5px;
+  padding: 5vh;
+}
+.addEmployeeForm input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(236, 236, 236);
+}
+.addEmployeeForm input::-webkit-outer-spin-button,
+.addEmployeeForm input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.addEmployeeSubmit {
+  padding: 10px !important;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(207, 207, 207);
+  cursor: pointer;
+}
+.addEmployeeSubmit:hover {
+  background-color: rgb(157, 157, 157);
+}
