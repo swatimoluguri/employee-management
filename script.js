@@ -4,7 +4,42 @@
   const employeeList = document.querySelector(".emp-name");
   const selectEmployee = document.querySelector(".emp-details");
   let selectedEmpl = empList[0].id;
-
+  const addEmployeeBtn = document.querySelector(".add-emp");
+  const addEmployeeDiv = document.querySelector(".addEmployee");
+  const addEmployeeForm = document.querySelector(".addEmployeeForm");
+  addEmployeeBtn.addEventListener("click", () => {
+    addEmployeeDiv.style.display =
+      addEmployeeDiv.style.display === "block" ? "none" : "block";
+  });
+  document.addEventListener("click", (event) => {
+    if (
+      !addEmployeeDiv.contains(event.target) &&
+      event.target !== addEmployeeBtn
+    ) {
+      addEmployeeDiv.style.display = "none";
+    }
+  });
+  addEmployeeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(addEmployeeForm);
+    const values = [...formData.entries()];
+    let empData = {};
+    values.forEach((emp) => {
+      empData[emp[0]] = emp[1];
+    });
+    empData.id=empList[empList.length-1].id+1;
+    var today = new Date();
+    var birthDate = new Date(empData['dob']);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    empData.age=age;
+    empList.push(empData);
+    addEmployeeDiv.style.display = "none";
+    renderEmployees();
+  });
   employeeList.addEventListener("click", (e) => {
     if (e.target.tagName === "SPAN" && selectedEmpl.id !== e.target.id) {
       selectedEmpl = e.target.id;
@@ -38,7 +73,8 @@
     });
   };
   const renderSingleEmployee = () => {
-    if (selectedEmpl&& selectedEmpl.id) {
+    console.log(selectedEmpl);
+    if (selectedEmpl && selectedEmpl.id) {
       selectEmployee.innerHTML = `
         <img src="${selectedEmpl.imageUrl}"/>
         <span class="emp-name-single">${
@@ -50,9 +86,9 @@
         <span>${selectedEmpl.dob}</span>
         <span>${selectedEmpl.salary}</span>
         <span>${selectedEmpl.address}</span>`;
-    }else{
-        selectEmployee.innerHTML ='';
-        return;
+    } else {
+      selectEmployee.innerHTML = "";
+      return;
     }
   };
   renderEmployees();
